@@ -1,5 +1,5 @@
-# The Move Programming Language
+# Move Programlama Dili
 
-Move is a safe and reliable language developed for blockchains by [Diem](https://diem.com/). You can read language white paper on [Diem developers website](https://developers.libra.org/docs/assets/papers/libra-move-a-language-with-programmable-resources/2019-09-26.pdf). And you can find perfect answer to why it's suited for blockchain use [here](https://community.diem.com/t/introducing-the-move-programming-language/72/45).
+Move, [Diem](https://diem.com/) tarafından blok zincirler için geliştirilmiş güvenilir bir programlama dilidir. [Diem geliştiricileri web sitesinde](https://developers.libra.org/docs/assets/papers/libra-move-a-language-with-programmable-resources/2019-09-26.pdf) dil teknik incelemesini okuyabilirsiniz. ). Blockchain kullanımına neden uygun olduğuna dair mükemmel cevabı [burada](https://community.diem.com/t/introduce-the-move-programming-language/72/45) bulabilirsiniz.
 
-This book is a collection of all the information which I found and shaped into a single source of knowledge about Move language. 
+Bu kitap, Move dili hakkında bulduğum ve tek bir bilgi kaynağına dönüştürdüğüm tüm bilgilerin bir koleksiyonudur.
