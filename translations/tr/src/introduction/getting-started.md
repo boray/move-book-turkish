@@ -4,28 +4,28 @@
 
 ---
 
-As with any compiled language, you need a proper set of tools to compile, run and debug your Move applications. Since this language is created for blockchains and used only within them, running scripts off-chain is a non-trivial task: every module will require an environment, account handling and compile-publishing system.
+Herhangi bir derlenmiş dilde olduğu gibi, Move uygulamalarınızı derlemek, çalıştırmak ve hatalarını ayıklamak için uygun bir araç setine ihtiyacınız vardır. Bu dil blok zincirleri için oluşturulduğundan ve yalnızca bunların içinde kullanıldığından, komut dosyalarını zincir dışı çalıştırmak önemsiz bir görevdir: her modül bir ortam, hesap işleme ve derleme-yayınlama sistemi gerektirir.
 
-To simpify development of Move modules I've created [Move IDE](https://github.com/damirka/vscode-move-ide) extension for Visual Studio Code. This extension will help you cope with environment requirements. Use of this extension is highly recommended as it will handle the build/run environment for you, hence will let you focus on learning Move language instead of struggling with the CLI. This extension also includes Move syntax highlighting and executor to help debug your applications before going public.
+Move modüllerinin geliştirilmesini basitleştirmek için Visual Studio Code için [Move IDE](https://github.com/damirka/vscode-move-ide) uzantısını oluşturdum. Bu uzantı, ortam gereksinimleriyle başa çıkmanıza yardımcı olacaktır. Bu uzantının kullanılması, sizin için inşa/çalıştır ortamını idare edeceğinden şiddetle tavsiye edilir, bu nedenle komut satırı arayüzü ile uğraşmak yerine Move dilini öğrenmeye odaklanmanıza izin verir. Bu uzantı ayrıca, uygulamalarınızın genel kullanıma sunulmadan önce hatalarının ayıklanmasına yardımcı olmak için sözdizimi vurgulamayı ve yürütücüyü Taşı içerir.
 
-## Install Move IDE
+## Move IDE Kurulumu
 
-To install it you'll need:
+Yüklemek için aşağıdakilere ihtiyacınız olacak:
 
-1. VSCode (version 1.43.0 and above) - you can [get it here](https://code.visualstudio.com/download); if you already have one - proceed to the next step;
-2. Move IDE - once VSCode is installed, follow [this link](https://marketplace.visualstudio.com/items?itemName=damirka.move-ide) to install the newest version of IDE.
+1. VSCode (versiyon 1.43.0 ve üstü) - [buradan indirebilirsin](https://code.visualstudio.com/download); eğer zaten kuruluysa sonraki adıma geçin;
+2. Move IDE - VSCode yüklendikten sonra, [buradan indirebilirsiniz](https://marketplace.visualstudio.com/items?itemName=damirka.move-ide) IDE'nin en güncel versiyonunu kullandığınızdan emin olun.
+   
+### Ortamı Kur
 
-### Setup environment
-
-Move IDE proposes a single way of organizing your directory structure. Create a new directory for your project and open it in VSCode. Then setup this directory structure:
+Move IDE, dizin yapınızı düzenlemenin tek bir yol önerir. Projeniz için yeni bir dizin oluşturun ve VSCode'da açın. Ardından bu dizin yapısını kurun:
 
 ```
-modules/   - directory for our modules
-scripts/   - directory for transaction scripts
-out/       - this directory will hold compiled sources
+modules/   - modüller için dizin
+scripts/   - işlem(transaction) scriptleri dosyaları için dizin
+out/       - bu dizin derlenmiş kaynak dosyaları tutacak
 ```
 
-Also you'll need to create a file called `.mvconfig.json` which will configure your working environment. This is a sample for `libra`:
+Ayrıca, çalışma ortamınızı yapılandıracak olan `.mvconfig.json` adlı bir dosya oluşturmanız gerekecektir. Bu, "libra" için bir örnektir:
 
 ```json
 {
@@ -34,7 +34,7 @@ Also you'll need to create a file called `.mvconfig.json` which will configure y
 }
 ```
 
-Alternatively you can use `dfinance` as network:
+Alternatif olarak, ağ olarak "dfinance" kullanabilirsiniz:
 
 ```json
 {
@@ -43,15 +43,15 @@ Alternatively you can use `dfinance` as network:
 }
 ```
 
-> dfinance uses bech32 'wallet1...' addresses, libra uses 16-byte '0x...' addresses. For local runs and experiments 0x1 address is enough - it's simple and short. Though when working with real blockchains in testnet or production environment you'll have to use correct address of the network you've chosen.
+> dfinance bech32 'wallet1...' adreslerini, libra ise 16 baytlık '0x...' adreslerini kullanır. Yerel çalıştırmalar ve deneyler için 0x1 adresi yeterlidir - basit ve kısadır. Testnet veya production ortamında gerçek blok zincirlerle çalışırken, seçtiğiniz ağın doğru adresini kullanmanız gerekecek.
 
-## Your very first application with Move
+## Move ile İlk Uygulama
 
-Move IDE allows you to run scripts in a testing environment. Let's see how it works by implementing `gimme_five()` function and running it inside VSCode.
+Move IDE, scriptleri bir test ortamında çalıştırmanıza olanak tanır. `gimme_five()` fonksiyonunu uygulayarak ve VSCode içinde çalıştırarak nasıl çalıştığını görelim.
 
-### Create module
+### Modül Oluştur
 
-Create new file called `hello_world.move` inside `modules/` directory of your project.
+Projenizin 'modules/' dizini içinde 'hello_world.move' adında yeni bir dosya oluşturun.
 ```Move
 // modules/hello_world.move
 address 0x1 {
@@ -63,11 +63,11 @@ module HelloWorld {
 }
 ```
 
-> If you decided to use your own address (not `0x1`) - make sure you've changed 0x1 in this file and the one below
+> Kendi adresinizi kullanmaya karar verdiyseniz ("0x1" yerine) - bu dosyada ve aşağıdaki dosyada 0x1'i değiştirdiğinizden emin olun.
 
-### Write script
+### Script Yaz
 
-Then create a script, let's call it `me.move` inside `scripts/` directory:
+Sonra bir script oluşturun, buna "scripts/" dizini içinde "me.move" diyelim:
 ```Move
 // scripts/run_hello.move
 script {
@@ -82,13 +82,14 @@ script {
 }
 ```
 
-Then, while keeping your script open follow these steps:
-1. Toggle VSCode's command palette by pressing `⌘+Shift+P` (on Mac) or `Ctrl+Shift+P` (on Linux/Windows)
-2. Type: `>Move: Run Script` and press enter or click when you see the right option.
+Ardından, scriptinizi açık tutarken şu adımları izleyin:
+1. '⌘+Shift+P' (Mac'te) veya 'Ctrl+Shift+P' (Linux/Windows'ta) tuşlarına basarak VSCode'un komut paletini değiştirin
+2. `>Move: Run Script` yazın ve doğru seçeneği gördüğünüzde enter'a basın veya tıklayın.
 
 Voila! You should see the execution result - log message with '5' printed in debug. If you don't see this window, go through this part again.
+İşte! Execution(?) sonucunu görmelisiniz - hata ayıklamada '5' yazdırılmış log mesajı. Bu pencereyi görmüyorsanız, bu bölümü tekrar gözden geçirin.
 
-Your directory structure should look like this:
+Dizin yapınız şöyle görünmelidir:
 ```
 modules/
   hello_world.move
@@ -98,4 +99,4 @@ out/
 .mvconfig.json
 ```
 
-> You can have as many modules as you want in your modules directory; all of them will be accessible in your scripts under address which you've specified in .mvconfig.json
+> Modüller dizininde istediğiniz kadar modül bulundurabilirsiniz; hepsine .mvconfig.json'da belirttiğiniz adres altında komut dosyalarınızda erişilebilir olacaktır.

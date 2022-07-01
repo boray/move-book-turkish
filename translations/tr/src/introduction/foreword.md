@@ -1,7 +1,7 @@
-# Foreword
+# Önsöz
 
-When I wrote this book, there was no documentation (or other reference) on Move language and the goal I pursued was to give people a chance to see hidden gem of crypto world - the Move language. Currently, [there is a Move documentation](https://diem.github.io/move/introduction.html) written by language developers. Yet I still think that flow given in this book is more intuitive and more friendly for a newcomer, I once was a newcomer too and Move is one tricky and interesting language some concepts of which might be mind-blowing.
+Bu kitabı yazdığımda, Move diliyle ilgili herhangi bir belge (veya başka bir referans) yoktu ve peşinden koştuğum hedef, insanlara kripto dünyasının gizli mücevheri olan Move dilini görme şansı vermekti. Şu anda, dil geliştiricileri tarafından yazılmış [Move dokümentasyonu](https://diem.github.io/move/introduction.html). Yine de, bu kitapta verilen akışın yeni başlayanlar için daha anlaşılabilir ve kolay olduğunu düşünüyorum, bir zamanlar ben de yeniydim ve Move, bazı kavramları akıllara durgunluk verebilecek, zor ve ilginç bir dil.
 
-I deeply love this language and hope you'll see why!
+Bu dili çok seviyorum ve nedenini anlayacağını umuyorum!
 
 \- Damir Shamanaev
